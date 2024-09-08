@@ -68,7 +68,7 @@ ctk.set_appearance_mode('light')
 win.iconbitmap('image\\SumHexIco.ico')
 win.minsize(600, 500)
 
-#---------- Grid
+#---------- Grid  ----------
 win.grid_rowconfigure(index=(0,1,2), weight=1)
 win.grid_columnconfigure(index=0, weight=3)
 win.grid_columnconfigure(index=1, weight=1)
