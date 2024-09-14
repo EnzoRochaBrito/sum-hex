@@ -28,39 +28,49 @@ def mix_color(): #Update the colorrow labels and calcule the hexadecimal color
     
     if hexcode1:
         try:
+            color1 = hextodec.rgb(hexcode1) 
             colorrow1.configure(fg_color=f"#{hexcode1}", text=f"#{hexcode1}")
+            sumcolor1 = sum(color1)
+            
+            if sumcolor1 > 381:
+                colorrow1.configure(text_color="black")
+            else:
+                colorrow1.configure(text_color="white")
+                
         except:
             messagebox.showerror(title="Invalid HexCode", message="The HexCode in the \"Color 1\" entry is unvalid!")
             return -1
     
     if hexcode2:
         try:
+            color2 = hextodec.rgb(hexcode2)
             colorrow2.configure(fg_color=f"#{hexcode2}", text=f"#{hexcode2}")
+            sumcolor2 = sum(color2)
+            
+            if sumcolor2 > 381:
+                colorrow2.configure(text_color="black")
+            else:
+                colorrow2.configure(text_color="white")
+                
         except:
             messagebox.showerror(title="Invalid HexCode", message="The HexCode in the \"Color 2\" entry is unvalid!")
             return -1
     
     if (hexcode1 and hexcode2):
-        color1 = hextodec.rgb(hexcode1)
-        color2 = hextodec.rgb(hexcode2)
-        
         for i in range(3):
             color3.append((color1[i]//2)+(color2[i]//2)) #Sum the RGB of both Entry's and breaks it in half
         
         for rgb in color3: #Transforms the RGB into Hexadecimal Code again
             newhex += hex(rgb)[2:]
+            
+        sumcolor3 = sum(color3)
         
         colorrow3.configure(fg_color=newhex, text=newhex)
         
-        if sum(color3) > 381:
-            colorrow1.configure(text_color="black")
-            colorrow2.configure(text_color="black")
+        if sumcolor3 > 381:
             colorrow3.configure(text_color="black")
         else:
-            colorrow1.configure(text_color="white")
-            colorrow2.configure(text_color="white")
             colorrow3.configure(text_color="white")
-
 #==========================================Settings==========================================
 win = ctk.CTk('white')
 win.title('Sum Hex')
@@ -100,7 +110,7 @@ Title         = ctk.CTkLabel(win, fg_color='white', text='Sum-Hex', font=title_f
 EntryHex1     = ctk.CTkEntry(win, fg_color='#ffffff', placeholder_text="Hexadecimal Color 1", font=entry_box)
 EntryHex2     = ctk.CTkEntry(win, fg_color='#ffffff', placeholder_text="Hexadecimal Color 2", font=entry_box)
 
-CalcHexButton = ctk.CTkButton(win, fg_color='#707070', hover_color="#efefef" ,text='Mix Colors', font=std_font, text_color='darkblue', command=mix_color)
+CalcHexButton = ctk.CTkButton(win, fg_color='#369', hover_color="#98b2cb" ,text='Mix Colors', font=std_font, text_color='white', command=mix_color)
 
 Title.grid(column=1, row=0, sticky='ns')
 EntryHex1.grid(column=1, row=1, sticky='n')
