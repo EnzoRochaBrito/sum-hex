@@ -35,7 +35,7 @@ def mix_color(): #Update the colorrow labels and calcule the hexadecimal color
     
     if hexcode2:
         try:
-            colorrow2.configure(fg_color=f"#{hexcode2}", text=f"#{hexcode1}")
+            colorrow2.configure(fg_color=f"#{hexcode2}", text=f"#{hexcode2}")
         except:
             messagebox.showerror(title="Invalid HexCode", message="The HexCode in the \"Color 2\" entry is unvalid!")
             return -1
