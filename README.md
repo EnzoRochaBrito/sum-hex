@@ -1,3 +1,3 @@
-# Atividade Senai, Ford <Enter>
+# SumHex
 
-Aprendendo sobre: Versionamento; ramificações e Scrum.
+This software takes 2 hexadecimal colors and mix them.
